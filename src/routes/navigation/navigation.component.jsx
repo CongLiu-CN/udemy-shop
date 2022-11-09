@@ -10,6 +10,8 @@ import './navigation.styles.scss';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
+  const userImage = `https://static.wikia.nocookie.net/silicon-valley/images/1/1f/Erlich_Bachman.jpg`;
+  console.log(currentUser)
 
   return (
     <Fragment>
@@ -21,11 +23,18 @@ const Navigation = () => {
           <Link className='nav-link' to='/shop'>
             SHOP
           </Link>
-
           {currentUser ? (
-            <span className='nav-link' onClick={signOutUser}>
-              SIGN OUT
-            </span>
+            <>
+              <div
+                className="user-image"
+                style={{
+                  backgroundImage: `url(${userImage})`,
+                }}
+              />
+              <span className='nav-link' onClick={signOutUser}>
+                SIGN OUT
+              </span>
+            </>
           ) : (
             <Link className='nav-link' to='/auth'>
               SIGN IN
