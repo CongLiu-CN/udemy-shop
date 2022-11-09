@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 900,
+  "height": 560,
+  "padding": {"top": 0, "left": 0, "right": 0, "bottom": 0},
+  "signals": [],
+  "data": [
+    {
+      "name": "yyy",
+      "url": "https://gist.githubusercontent.com/Brideau/2391df60938462571ca9/raw/f5a1f3b47ff671eaf2fb7e7b798bacfc6962606a/canadaprovtopo.json",
+      "format": {"type": "topojson", "feature":"canadaprov"},
+      "transform": [
+        {
+          "type": "geopath",
+          "projection": "xxx"
+        }
+      ]
+    }
+  ],
+  "scales": [],
+  "projections": [
+    {
+      "name": "xxx",
+      "type": "conicConformal",
+      "scale": 650,
+      "rotate": [91, 0],
+      "parallels": [49, 77],
+      "center":[0, 63],
+      "translate": [{"signal": "width/2"}, {"signal": "height/2"}]
+    }
+  ],
+  "marks": [
+    {
+      "type": "path",
+      "from": {"data": "yyy"},
+      "encode": {
+        "enter": {
+          "fill": {"value": "#dedede"},
+          "stroke":{"value": "white"}
+        },
+        "update":{
+          "path": {"field": "path"}
+        }
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import Directory from '../../components/directory/directory.component';
+import Canada from '../../components/map/canada.component';
 
 const Home = () => {
   const categories = [
@@ -33,7 +33,7 @@ const Home = () => {
 
   return (
     <div>
-      <Directory categories={categories} />
+      <Canada />
       <Outlet />
     </div>
   );
