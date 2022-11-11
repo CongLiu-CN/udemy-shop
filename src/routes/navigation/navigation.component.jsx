@@ -28,7 +28,9 @@ const Navigation = () => {
           <CrwnLogo className='logo' />
         </LogoContainer>
         <NavLinks>
-          <NavLink to='/shop'>SHOP</NavLink>
+          <NavLink to='/province'>Province</NavLink>
+          <NavLink to='/college'>College</NavLink>
+          <NavLink to='/major'>Major</NavLink>
 
           {currentUser ? (
             <NavLink as='span' onClick={signOutUser}>

@@ -4,8 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import { UserProvider } from './contexts/user.context';
-import { CategoriesProvider } from './contexts/categories.context';
+import { MajorProvider } from './contexts/major.context';
 import { CartProvider } from './contexts/cart.context';
+import { ProvinceProvider } from './contexts/province.context';
+import { CollegeProvider } from './contexts/college.context';
 
 import './index.scss';
 
@@ -15,11 +17,15 @@ render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <CategoriesProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </CategoriesProvider>
+        <ProvinceProvider>
+          <CollegeProvider>
+            <MajorProvider>
+              <CartProvider>
+                <App />
+              </CartProvider>
+            </MajorProvider>
+          </CollegeProvider>
+        </ProvinceProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
