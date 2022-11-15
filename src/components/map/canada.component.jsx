@@ -1,110 +1,39 @@
+import React from 'react';
 import { Vega } from 'react-vega';
 
-const spec = {
-  "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 900,
-  "height": 560,
-  "padding": {"top": 0, "left": 0, "right": 0, "bottom": 0},
-  "signals": [
-    {
-      "name": "scale",
-      "value": 650,
-      "on": [{
-        "events": 
-        {
-          "markname": "country-level", 
-          "type": "click", 
-          "consume": true
-        },
-        "update": "if(test(datum.pop.Province,'Ontario'), 1000, 650)"
-      }]
-    }
-  ],
-  "data": [
-    {
-        "name": "population",            
-        "url": "https://raw.githubusercontent.com/gramener/vegatutorial/gh-pages/data/CAN_adm1.population.csv", 
-        "format": {
-          "type": "csv",      
-          "parse": "auto" 
-        }
-      },
-    {
-      "name": "canada",
-      "url": "https://raw.githubusercontent.com/gramener/vegatutorial/gh-pages/data/CAN_adm1.json",
-      "format": { "type": "topojson", "feature": "CAN_adm1" },
-      "transform": [
-        {"type": "geopath", "projection": "xxx"},
-        {                                 
-            "type": "lookup",               
-            "from": "population",            
-            "key": "Province",            
-            "fields": ["properties.NAME_1"],  
-            "as": ["pop"]                   
-          }
-      ]
-    }
-  ],
-  "scales": [
-    {
-      "name": "growth-color",
-      "type": "ordinal",
-      "domain": {"data": "population", "field": "Province"},
-      "range": {"scheme": "category20"}
-    }
-  ],
-  "projections": [
-    {
-      "name": "xxx",
-      "type": "conicConformal",
-      "scale": {"signal": "scale"},
-      "rotate": [91, 0],
-      "parallels": [49, 77],
-      "center":[0, 63],
-      "translate": [{"signal": "width/2"}, {"signal": "height/2"}]
-    }
-  ],
-  "marks": [
-    {
-      "name": "country-level",
-      "type": "path",
-      "from": {"data": "canada"},
-      "encode": {
-        "enter": {
-          "fill": {                   
-            "value": "pink"
-          },
-          "stroke":{"value": "white"},
-          "tooltip": {
-            "signal": "{'Province': datum.pop.Province}"
-          }
-        },
-        "update":{
-          "path": {"field": "path"},
-          "fill": {                   
-            "value": "pink"
-          },
-          "stroke":{"value": "white"}
-        },
-        "hover": {
-          "strokeWidth": {"value": 0.5},
-          "stroke": {"value": "black"},
-          "zindex": {"value": 1},
-          "fill": {                   
-            "field": "pop.Province",    
-            "scale": "growth-color"
-          }
-        },
-        "exit": {"stroke": {"value": "white"}}
-      }
-    }
-  ]
+const spec = (width) => {
+  const string = `{"$schema":"https://vega.github.io/schema/vega/v5.json","width":${width/2.1},"height":${width/2.3},"padding":{"top":0,"left":0,"right":0,"bottom":0},"signals":[],"data":[{"name":"canada","url":"https://raw.githubusercontent.com/CongLiu-CN/data/main/CAN_adm1.json","format":{"type":"topojson","feature":"CAN_adm1"},"transform":[{"type":"geopath","projection":"xxx"}]}],"scales":[{"name":"growth-color","type":"ordinal","domain":{"data":"canada","field":"properties.NAME_1"},"range":{"scheme":"category20"}}],"projections":[{"name":"xxx","type":"conicConformal","scale":${width/1.7},"rotate":[95,0],"parallels":[49,77],"center":[0,63],"translate":[{"signal":"width/2"},{"signal":"height/2"}]}],"marks":[{"type":"path","from":{"data":"canada"},"encode":{"enter":{"fill":{"value":"pink"},"stroke":{"value":"white"},"tooltip":{"signal":"{'Province': datum.properties.NAME_1}"}},"update":{"path":{"field":"path"},"fill":{"value":"pink"},"stroke":{"value":"white"}},"hover":{"strokeWidth":{"value":0.5},"stroke":{"value":"black"},"zindex":{"value":1},"fill":{"field":"properties.NAME_1","scale":"growth-color"}},"exit":{"stroke":{"value":"white"}}}}]}`
+  return JSON.parse(string)
 }
 
 
 const Canada = () => {
+
+  const [dimensions, setDimensions] = React.useState({ 
+    height: window.innerHeight,
+    width: window.innerWidth
+  })
+  React.useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
+    }
+  
+    window.addEventListener('resize', handleResize)
+  
+    return _ => {
+      window.removeEventListener('resize', handleResize)
+    }
+  })
+  
+  const {
+    width
+  } = dimensions
+
   return (
-      <Vega spec={spec} />
+      <Vega spec={spec(width)} actions={false}/>
   );
 }
 

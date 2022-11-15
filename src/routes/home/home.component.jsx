@@ -4,7 +4,7 @@ import Canada from '../../components/map/canada.component';
 
 const Home = () => {
   return (
-    <div>
+    <div style={{backgroundColor: "lightgray"}}>
       <Canada />
       <Outlet />
     </div>
