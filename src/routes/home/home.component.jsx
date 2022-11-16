@@ -1,13 +1,16 @@
 import { Outlet } from 'react-router-dom';
 
 import Canada from '../../components/map/canada.component';
+import BulletinBoard from '../../components/bulletin-board/bulletin-board.component';
+import { HomeContainer } from './home.styles'
 
 const Home = () => {
   return (
-    <div style={{backgroundColor: "lightgray"}}>
+    <HomeContainer>
       <Canada />
+      <BulletinBoard />
       <Outlet />
-    </div>
+    </HomeContainer>
   );
 };
 
