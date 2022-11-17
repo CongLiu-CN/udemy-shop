@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import { Vega } from 'react-vega';
 
 const spec = (width) => {
@@ -32,9 +33,10 @@ const Canada = () => {
     width
   } = dimensions
 
-
+  let history = useNavigate();
   function handleClick(...args){
     console.log(args[1]);
+    history(`/${args[1]}`)
   }
   // better declare outside of render function
   const signalListeners = { clicked: handleClick };
