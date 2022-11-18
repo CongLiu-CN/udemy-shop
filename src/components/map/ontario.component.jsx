@@ -7,20 +7,7 @@ const spec = {
   "width": 500,
   "height": 600,
   "padding": {"top": 0, "left": 0, "right": 0, "bottom": 0},
-  "signals": [
-    { "name": "scale", "value": 2200,
-      "bind": {"input": "range", "min": 500, "max": 4500, "step": 1} },
-    { "name": "rotate0", "value": 95,
-      "bind": {"input": "range", "min": -180, "max": 180, "step": 1} },
-    { "name": "rotate1", "value": 0,
-      "bind": {"input": "range", "min": -90, "max": 90, "step": 1} },
-    { "name": "center0", "value": 9,
-      "bind": {"input": "range", "min": -180, "max": 180, "step": 1} },
-    { "name": "center1", "value": 50,
-      "bind": {"input": "range", "min": -90, "max": 90, "step": 1} },
-    { "name": "translate0", "update": "width / 2" },
-    { "name": "translate1", "update": "height / 2" }
-  ],
+  "signals": [],
   "data": [
     {
       "name": "cities",
@@ -59,18 +46,18 @@ const spec = {
     {
       "name": "xxx",
       "type": "conicConformal",
-      "scale": {"signal": "scale"},
+      "scale": 2800,
       "rotate": [
-        {"signal": "rotate0"},
-        {"signal": "rotate1"}
+        {"signal": "95"},
+        {"signal": "0"}
       ],
       "center": [
-        {"signal": "center0"},
-        {"signal": "center1"}
+        {"signal": "6"},
+        {"signal": "50"}
       ],
       "translate": [
-        {"signal": "translate0"},
-        {"signal": "translate1"}
+        {"signal":"width/2"},
+        {"signal":"height/2"}
       ]
     }
   ],
@@ -98,11 +85,11 @@ const spec = {
       "from": {"data": "cities"},
       "encode": {
         "enter": {
-          "size": {"value": 20},
+          "size": {"value": 200},
           "fill": {"value": "#4269F2"},
-          "fillOpacity": {"value": 0.7},
+          "fillOpacity": {"value": 0.3},
           "stroke": {"value": "#5FA1D5"},
-          "strokeWidth": {"value": 0.5},
+          "strokeWidth": {"value": 1},
           "tooltip": {
             "signal": "datum.name"
           }
@@ -118,32 +105,8 @@ const spec = {
 
 
 const Ontario = () => {
-
-  const [dimensions, setDimensions] = useState({ 
-    height: window.innerHeight,
-    width: window.innerWidth
-  })
-  useEffect(() => {
-    function handleResize() {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth
-      })
-    }
-  
-    window.addEventListener('resize', handleResize)
-  
-    return _ => {
-      window.removeEventListener('resize', handleResize)
-    }
-  })
-  
-  const {
-    width
-  } = dimensions
-
   return (
-      <Vega spec={spec} actions={false}/>
+      <Vega spec={spec} actions={false} />
   );
 }
 

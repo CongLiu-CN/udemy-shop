@@ -7,7 +7,7 @@ import { Outlet } from 'react-router-dom';
 
 import { Ontario } from '../../components/map';
 import BulletinBoard from '../../components/bulletin-board/bulletin-board.component';
-import { ProvinceSelectedContainer } from './province-selected.styles'
+import { ProvinceSelectedContainer, MapContainer } from './province-selected.styles'
 
 // import TableBoard from '../../components/table-board/table-board.component'
 
@@ -22,7 +22,9 @@ console.log({provinceSelected})
   return (
     provinceSelected === `Ontario` ? 
     <ProvinceSelectedContainer>
-      <Ontario />
+      <MapContainer>
+        <Ontario />
+      </MapContainer>
       <BulletinBoard />
       {/* <TableBoard data={data} /> */}
       <Outlet />

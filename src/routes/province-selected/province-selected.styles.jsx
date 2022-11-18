@@ -5,5 +5,10 @@ export const ProvinceSelectedContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   margin: 0 auto;
-  background-color: white;
+  background-color: lightgray;
+`;
+
+export const MapContainer = styled.div`
+  width: 50%;
+  background-color: pink;
 `;
