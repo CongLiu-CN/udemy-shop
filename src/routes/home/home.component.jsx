@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import Canada from '../../components/map/canada.component';
+import { Canada } from '../../components/map';
 import BulletinBoard from '../../components/bulletin-board/bulletin-board.component';
 import { HomeContainer } from './home.styles'
 

@@ -33,10 +33,20 @@ const Canada = () => {
     width
   } = dimensions
 
+  const spaceToDash = (x) => {
+    if(x.includes(` `)){
+      const y = x.replace(" ", "-")
+      return y
+    }
+    return x
+  }
+
   let history = useNavigate();
   function handleClick(...args){
-    console.log(args[1]);
-    history(`/${args[1]}`)
+    const provinceString = args[1]
+    console.log(`province returned from map: `, provinceString)
+    const provinceWithDash = spaceToDash(provinceString)
+    history(`/${provinceWithDash}`)
   }
   // better declare outside of render function
   const signalListeners = { clicked: handleClick };

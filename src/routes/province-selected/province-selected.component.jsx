@@ -3,8 +3,13 @@ import { useParams } from 'react-router-dom';
 
 import { ProvinceContext } from '../../contexts/province.context';
 import PageNotFound from '../../components/pageNotFound/pageNotFound.component';
+import { Outlet } from 'react-router-dom';
 
-import TableBoard from '../../components/table-board/table-board.component'
+import { Ontario } from '../../components/map';
+import BulletinBoard from '../../components/bulletin-board/bulletin-board.component';
+import { ProvinceSelectedContainer } from './province-selected.styles'
+
+// import TableBoard from '../../components/table-board/table-board.component'
 
 const ProvinceSelected = () => {
   const { provinceSelected } = useParams();
@@ -16,7 +21,12 @@ const ProvinceSelected = () => {
 console.log({provinceSelected})
   return (
     provinceSelected === `Ontario` ? 
-    <TableBoard data={data} />
+    <ProvinceSelectedContainer>
+      <Ontario />
+      <BulletinBoard />
+      {/* <TableBoard data={data} /> */}
+      <Outlet />
+    </ProvinceSelectedContainer>
   :
   <PageNotFound /> 
   );
