@@ -4,10 +4,87 @@ import { Vega } from 'react-vega';
 
 const spec = {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 500,
-  "height": 600,
-  "padding": {"top": 0, "left": 0, "right": 0, "bottom": 0},
-  "signals": [],
+  "description": "An interactive world map supporting pan and zoom.",
+  "width": 920,
+  "height": 800,
+  "autosize": "none",
+
+  "signals": [
+    { "name": "tx", "update": "width / 2" },
+    { "name": "ty", "update": "height / 2" },
+    {
+      "name": "scale",
+      "value": 2800,
+      "on": [{
+        "events": {"type": "wheel", "consume": true},
+        "update": "clamp(scale * pow(1.0005, -event.deltaY * pow(16, event.deltaMode)), 2800, 100000)"
+      }]
+    },
+    {
+      "name": "angles",
+      "value": [0, 0],
+      "on": [{
+        "events": "mousedown",
+        "update": "[rotateX, centerY]"
+      }]
+    },
+    {
+      "name": "cloned",
+      "value": null,
+      "on": [{
+        "events": "mousedown",
+        "update": "copy('xxx')"
+      }]
+    },
+    {
+      "name": "start",
+      "value": null,
+      "on": [{
+        "events": "mousedown",
+        "update": "invert(cloned, xy())"
+      }]
+    },
+    {
+      "name": "drag", "value": null,
+      "on": [{
+        "events": "[mousedown, window:mouseup] > window:mousemove",
+        "update": "invert(cloned, xy())"
+      }]
+    },
+    {
+      "name": "delta", "value": null,
+      "on": [{
+        "events": {"signal": "drag"},
+        "update": "[drag[0] - start[0], start[1] - drag[1]]"
+      }]
+    },
+    {
+      "name": "rotateX", "value": 95,
+      "on": [{
+        "events": {"signal": "delta"},
+        "update": "angles[0] + delta[0]"
+      }]
+    },
+    {
+      "name": "centerY", "value": 49.5,
+      "on": [{
+        "events": {"signal": "delta"},
+        "update": "clamp(angles[1] + delta[1], -60, 60)"
+      }]
+    }
+  ],
+
+  "projections": [
+    {
+      "name": "xxx",
+      "type": "conicConformal",
+      "scale": {"signal": "scale"},
+      "rotate": [{"signal": "rotateX"}, 0, 0],
+      "center": [10, {"signal": "centerY"}],
+      "translate": [{"signal": "tx"}, {"signal": "ty"}]
+    }
+  ],
+
   "data": [
     {
       "name": "cities",
@@ -41,26 +118,7 @@ const spec = {
       ]
     }
   ],
-  "scales": [],
-  "projections": [
-    {
-      "name": "xxx",
-      "type": "conicConformal",
-      "scale": 2800,
-      "rotate": [
-        {"signal": "95"},
-        {"signal": "0"}
-      ],
-      "center": [
-        {"signal": "6"},
-        {"signal": "50"}
-      ],
-      "translate": [
-        {"signal":"width/2"},
-        {"signal":"height/2"}
-      ]
-    }
-  ],
+
   "marks": [
     {
       "type": "path",
