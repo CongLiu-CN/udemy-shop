@@ -34,6 +34,7 @@ const Canada = () => {
     width
   } = dimensions
 
+  //refactor
   const spaceToDash = (x) => {
     if(x.includes(` `)){
       const y = x.replace(" ", "-")
@@ -53,7 +54,7 @@ const Canada = () => {
   const signalListeners = { clicked: handleClick };
 
   return (
-      <Vega spec={spec(width)} actions={false} signalListeners={signalListeners}/>
+      <Vega spec={spec(width)} actions={false} signalListeners={signalListeners} />
   );
 }
 
