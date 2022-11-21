@@ -46,3 +46,14 @@ export const InvertedButton = styled(BaseButton)`
     border: none;
   }
 `;
+
+export const HoverGrowButton = styled(BaseButton)`
+  height: 25px;
+  line-height: 25px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    height: 50px;
+    line-height: 50px;
+  }
+`

@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
-export const CollegeCardContainer = styled.div`
+export const CollegeBriefContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
   width: 800px;
+  padding: 10px 20px;
 `;
 
-export const CollegeCardHeader = styled.div`
+export const CollegeBriefHeader = styled.div`
   width: 100%;
   padding: 10px 0;
   display: flex;
@@ -15,7 +16,7 @@ export const CollegeCardHeader = styled.div`
   font-size: 45px;
 `;
 
-export const CollegeCardText = styled.span`
+export const CollegeBriefText = styled.span`
   margin-top: 30px;
   margin-left: 0;
   font-size: 36px;

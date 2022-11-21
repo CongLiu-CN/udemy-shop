@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Button from '../../components/button/button.component';
 import CardWrapper from '../../components/card-wapper/card-wrapper.component'
 
 export const ProvinceSelectedContainer = styled.div`
@@ -10,20 +9,18 @@ export const ProvinceSelectedContainer = styled.div`
 `;
 
 export const MapContainer = styled(CardWrapper)`
-  width: 49%;
+  width: 49.5%;
   height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
-export const CardContainer = styled.div`
-  width: 50%;
-  background-color: green;
-  padding: 20px;
+export const CardContainer = styled(CardWrapper)`
+  width: 49.5%;
 `;
 
-export const ToggelMap = styled(Button)`
+export const ToggelMap = styled.div`
   position: absolute;
   top: 120px;
   right: 52vw;

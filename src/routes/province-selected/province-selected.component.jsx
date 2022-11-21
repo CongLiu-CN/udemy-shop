@@ -9,7 +9,9 @@ import { Ontario } from '../../components/map';
 import { ProvinceSelectedContainer, MapContainer, CardContainer, ToggelMap } from './province-selected.styles'
 
 import CollegeList from '../../components/college-list/college-list.component'
-import CollegeCard from '../../components/college-card/college-card.component'
+import CollegeBrief from '../../components/college-brief/college-brief.component'
+
+import Button,  { BUTTON_TYPE_CLASSES } from '../../components/button/button.component';
 
 const ProvinceSelected = () => {
   const [ useMap, setUseMap ] = useState(false);
@@ -29,14 +31,14 @@ console.log({provinceSelected})
     provinceSelected === `Ontario` ? 
     <ProvinceSelectedContainer>
       <MapContainer>
-        <ToggelMap onClick={toggleMap}>{useMap? `Switch to Table` : `Switch to Map`}</ToggelMap>
+        <ToggelMap><Button buttonType={BUTTON_TYPE_CLASSES.grow}  type='button' onClick={toggleMap}>{useMap? `Switch to Table` : `Switch to Map`}</Button></ToggelMap>
         {
           useMap? <Ontario /> : <CollegeList data={data} />
         }
       </MapContainer>
       <CardContainer>
         {/* <BulletinBoard /> */}
-        <CollegeCard />
+        <CollegeBrief />
       </CardContainer>
     </ProvinceSelectedContainer>
   :
