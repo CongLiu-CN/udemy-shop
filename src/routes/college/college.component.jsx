@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { CollegeContext } from '../../contexts/college.context';
 
@@ -10,6 +11,8 @@ import {
 } from './college.styles';
 
 const College = () => {
+  const { collegeSelected } = useParams();
+  console.log(`second path: `, collegeSelected)
   const { college } = useContext(CollegeContext);
 
   return (

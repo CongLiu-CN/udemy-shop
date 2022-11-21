@@ -1,19 +1,25 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { ProvinceContext } from '../../contexts/province.context';
 import PageNotFound from '../../components/pageNotFound/pageNotFound.component';
-import { Outlet } from 'react-router-dom';
 
 import { Ontario } from '../../components/map';
-import BulletinBoard from '../../components/bulletin-board/bulletin-board.component';
-import { ProvinceSelectedContainer, MapContainer } from './province-selected.styles'
+// import BulletinBoard from '../../components/bulletin-board/bulletin-board.component';
+import { ProvinceSelectedContainer, MapContainer, CardContainer, ToggelMap } from './province-selected.styles'
 
-// import TableBoard from '../../components/table-board/table-board.component'
+import CollegeList from '../../components/college-list/college-list.component'
+import CollegeCard from '../../components/college-card/college-card.component'
 
 const ProvinceSelected = () => {
+  const [ useMap, setUseMap ] = useState(false);
   const { provinceSelected } = useParams();
   const { colleges } = useContext(ProvinceContext);
+
+  const toggleMap = () => {
+    setUseMap(!useMap)
+  }
+
   const data = {
     "provinceSelected": provinceSelected,
     "colleges": colleges
@@ -23,11 +29,15 @@ console.log({provinceSelected})
     provinceSelected === `Ontario` ? 
     <ProvinceSelectedContainer>
       <MapContainer>
-        <Ontario />
+        <ToggelMap onClick={toggleMap}>{useMap? `Switch to Table` : `Switch to Map`}</ToggelMap>
+        {
+          useMap? <Ontario /> : <CollegeList data={data} />
+        }
       </MapContainer>
-      <BulletinBoard />
-      {/* <TableBoard data={data} /> */}
-      <Outlet />
+      <CardContainer>
+        {/* <BulletinBoard /> */}
+        <CollegeCard />
+      </CardContainer>
     </ProvinceSelectedContainer>
   :
   <PageNotFound /> 
