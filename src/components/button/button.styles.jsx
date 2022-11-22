@@ -56,4 +56,50 @@ export const HoverGrowButton = styled(BaseButton)`
     height: 50px;
     line-height: 50px;
   }
-`
+`;
+
+export const LabelButtonSelected = styled.button`
+  min-width: 135px;
+  width: auto;
+  letter-spacing: 0.5px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-family: 'Open Sans Condensed';
+  font-weight: bolder;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: lightblue;
+  color: black;
+  cursor: pointer;
+  border: none;
+  margin-top: 15px;
+  transition: all 3s ease-in-out;
+  
+  &:hover {
+    background: conic-gradient(from .5turn at bottom center, lightblue, white);
+    color: black;
+  }
+`;
+
+export const LabelButton = styled(LabelButtonSelected)`
+  min-width: 135px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: conic-gradient(from .5turn at bottom center, lightblue, white);
+  border: 1px solid lightblue;
+  color: slategray;
+  margin-top: 0;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: lightblue;
+    color: black;
+    border: none;
+    margin-top: 8px;
+  }
+`;
+
+

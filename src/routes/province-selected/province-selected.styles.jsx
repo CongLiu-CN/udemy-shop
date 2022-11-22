@@ -18,6 +18,7 @@ export const MapContainer = styled(CardWrapper)`
 
 export const CardContainer = styled(CardWrapper)`
   width: 49.5%;
+  display: flex;
 `;
 
 export const ToggelMap = styled.div`
