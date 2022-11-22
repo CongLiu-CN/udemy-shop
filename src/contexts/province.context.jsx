@@ -271,9 +271,8 @@ export const ProvinceProvider = ({ children }) => {
 
   const [colleges, setColleges] = useState([])
 
-  const defaultProvince = canadaProvinces[8]
   useEffect(() => {
-    setProvince( defaultProvince )
+    setProvince(canadaProvinces[8])
     setColleges(ontarioColleges)
   }, []);
 

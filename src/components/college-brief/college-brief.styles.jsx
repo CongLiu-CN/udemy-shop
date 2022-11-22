@@ -5,7 +5,7 @@ export const CollegeBriefContainer = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 10px;
-  background: linear-gradient(to bottom, #778899 17%, white 17%);
+  background: linear-gradient(to bottom, #778899 17%, #e5e4e2 17%);
   border-radius: 20px;
 `;
 

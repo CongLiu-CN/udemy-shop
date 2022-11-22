@@ -2,6 +2,7 @@ import {CollegeBriefContainer, CollegeBriefHeader, Title, CollegeBriefText, Majo
 import Button, {BUTTON_TYPE_CLASSES} from '../button/button.component'
 import CardWrapper, {CARD_WRAPPER_CLASSES} from '../card-wapper/card-wrapper.component'
 import { useState } from 'react';
+import Emoji from '../icon/icon.component';
 
 const CollegeBrief = () => {
   const data = [
@@ -200,6 +201,7 @@ const CollegeBrief = () => {
       }
     </MajorCards>
     <CardWrapper cardType={CARD_WRAPPER_CLASSES.blue}>
+      <Emoji>🧐</Emoji>
       <CollegeBriefText>
         Conestoga College Institute of Technology and Advanced Learning is a public college located in Kitchener, Ontario, Canada
       </CollegeBriefText>

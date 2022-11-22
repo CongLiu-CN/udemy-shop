@@ -31,7 +31,7 @@ const Major = () => {
           <span>Remove</span>
         </HeaderBlock>
       </ProvinceHeader>
-      <Total>{Major.name}</Total>
+      <Total>{major.name}</Total>
     </ProvinceContainer>
   );
 };
