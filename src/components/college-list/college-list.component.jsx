@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import Emoji from '../icon/icon.component';
 import {
   CollegeListContainer,
   CollegeListHeader,
@@ -15,7 +16,7 @@ const {
 } = data
   return (
     <CollegeListContainer>
-      <Title>{provinceSelected.toUpperCase()}</Title>
+      <Title><Emoji>🍁</Emoji>{provinceSelected.toUpperCase()}</Title>
       <CollegeListHeader>
         <CollegeListBlock>
           <span>Logo</span>

@@ -15,3 +15,13 @@ export const CardWrapperBlue = styled(CardWrapperBase)`
   background-color: lightblue;
   padding: 10px 20px;
 `
+
+export const CardWrapperLine = styled(CardWrapperBase)`
+  background: conic-gradient(from -90deg at bottom center, papayawhip, peachpuff);
+  width: 100%;
+  height: 65vh;
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px 20px;
+  overflow-y: scroll;
+`

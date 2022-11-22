@@ -2,180 +2,180 @@ import {CollegeBriefContainer, CollegeBriefHeader, Title, CollegeBriefText, Majo
 import Button, {BUTTON_TYPE_CLASSES} from '../button/button.component'
 import CardWrapper, {CARD_WRAPPER_CLASSES} from '../card-wapper/card-wrapper.component'
 import { useState } from 'react';
-import Emoji from '../icon/icon.component';
 
 const CollegeBrief = () => {
+  //name, type, length, campus
   const data = [
     {
-     "Program Name": "Applied Artificial Intelligence & Machine Learning (Optional Co-op)",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Waterloo"
+     "name": "Applied Artificial Intelligence & Machine Learning (Optional Co-op)",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Applied Network Infrastructure and System Administration",
-     "Credential": "Graduate Certificate",
-     "Length": 2,
-     "Campus ": "Doon"
+     "name": "Applied Network Infrastructure and System Administration",
+     "type": "Graduate Certificate",
+     "length": 2,
+     "campus": "Doon"
     },
     {
-     "Program Name": "Bachelor of Applied Health Information Science (Honours)",
-     "Credential": "Bachelor",
-     "Length": 4,
-     "Campus ": "Online"
+     "name": "Bachelor of Applied Health Information Science (Honours)",
+     "type": "Bachelor",
+     "length": 4,
+     "campus": "Online"
     },
     {
-     "Program Name": "Bachelor of Computer Science (Honours)",
-     "Credential": "Bachelor",
-     "Length": 4,
-     "Campus ": "Waterloo"
+     "name": "Bachelor of Computer Science (Honours)",
+     "type": "Bachelor",
+     "length": 4,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Big Data Solution Architecture (Optional Co-op)",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Kitchener"
+     "name": "Big Data Solution Architecture (Optional Co-op)",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Kitchener"
     },
     {
-     "Program Name": "Cloud Data Management",
-     "Credential": "Graduate Certificate",
-     "Length": 2,
-     "Campus ": "Doon"
+     "name": "Cloud Data Management",
+     "type": "Graduate Certificate",
+     "length": 2,
+     "campus": "Doon"
     },
     {
-     "Program Name": "Computer Application Security (Optional Co-op)",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Waterloo"
+     "name": "Computer Application Security (Optional Co-op)",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Computer Applications Development (Optional Co-op)",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Online"
+     "name": "Computer Applications Development (Optional Co-op)",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Online"
     },
     {
-     "Program Name": "Computer Programming",
-     "Credential": "College Diploma",
-     "Length": 2,
-     "Campus ": "Waterloo"
+     "name": "Computer Programming",
+     "type": "College Diploma",
+     "length": 2,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Computer Programming and Analysis (Optional Co-op)",
-     "Credential": "Advanced Diploma",
-     "Length": 3,
-     "Campus ": "Waterloo"
+     "name": "Computer Programming and Analysis (Optional Co-op)",
+     "type": "Advanced Diploma",
+     "length": 3,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Computer Systems Technician - Information Technology Infrastructure and Services (Optional Co-op)",
-     "Credential": "College Diploma",
-     "Length": 2,
-     "Campus ": "Waterloo"
+     "name": "Computer Systems Technician - Information Technology Infrastructure and Services (Optional Co-op)",
+     "type": "College Diploma",
+     "length": 2,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Digital Solutions Management (Optional Co-op)",
-     "Credential": "Graduate Certificate",
-     "Length": 2,
-     "Campus ": "Kitchener"
+     "name": "Digital Solutions Management (Optional Co-op)",
+     "type": "Graduate Certificate",
+     "length": 2,
+     "campus": "Kitchener"
     },
     {
-     "Program Name": "Information Technology Business Analysis",
-     "Credential": "Graduate Certificate",
-     "Length": 2,
-     "Campus ": "Brantford"
+     "name": "Information Technology Business Analysis",
+     "type": "Graduate Certificate",
+     "length": 2,
+     "campus": "Brantford"
     },
     {
-     "Program Name": "Information Technology Infrastructure",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Waterloo"
+     "name": "Information Technology Infrastructure",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Information Technology Network Security",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Waterloo"
+     "name": "Information Technology Network Security",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Interactive Media Management - Interaction Design",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Kitchener"
+     "name": "Interactive Media Management - Interaction Design",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Kitchener"
     },
     {
-     "Program Name": "IT Innovation and Design (Optional Co-op)",
-     "Credential": "Advanced Diploma",
-     "Length": 3,
-     "Campus ": "Waterloo"
+     "name": "IT Innovation and Design (Optional Co-op)",
+     "type": "Advanced Diploma",
+     "length": 3,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Mobile Solutions Development (Optional Co-op)",
-     "Credential": "Graduate Certificate",
-     "Length": 2,
-     "Campus ": "Waterloo"
+     "name": "Mobile Solutions Development (Optional Co-op)",
+     "type": "Graduate Certificate",
+     "length": 2,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Network Technical Support",
-     "Credential": "College Certificate",
-     "Length": 1,
-     "Campus ": "Doon"
+     "name": "Network Technical Support",
+     "type": "College Certificate",
+     "length": 1,
+     "campus": "Doon"
     },
     {
-     "Program Name": "Predictive Analytics",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Guelph"
+     "name": "Predictive Analytics",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Guelph"
     },
     {
-     "Program Name": "Reporting Systems and Database Development",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Kitchener"
+     "name": "Reporting Systems and Database Development",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Kitchener"
     },
     {
-     "Program Name": "Software Engineering Technician",
-     "Credential": "College Diploma",
-     "Length": 2,
-     "Campus ": "Waterloo"
+     "name": "Software Engineering Technician",
+     "type": "College Diploma",
+     "length": 2,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Software Engineering Technology (Optional Co-op)",
-     "Credential": "Advanced Diploma",
-     "Length": 3,
-     "Campus ": "Waterloo"
+     "name": "Software Engineering Technology (Optional Co-op)",
+     "type": "Advanced Diploma",
+     "length": 3,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Software Quality Assurance and Test Engineering (Optional Co-op)",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Waterloo"
+     "name": "Software Quality Assurance and Test Engineering (Optional Co-op)",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Virtual Reality Production",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Kitchener"
+     "name": "Virtual Reality Production",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Kitchener"
     },
     {
-     "Program Name": "Virtualization and Cloud Computing",
-     "Credential": "Graduate Certificate",
-     "Length": 1,
-     "Campus ": "Waterloo"
+     "name": "Virtualization and Cloud Computing",
+     "type": "Graduate Certificate",
+     "length": 1,
+     "campus": "Waterloo"
     },
     {
-     "Program Name": "Web Development",
-     "Credential": "Graduate Certificate",
-     "Length": 2,
-     "Campus ": "Brantford"
+     "name": "Web Development",
+     "type": "Graduate Certificate",
+     "length": 2,
+     "campus": "Brantford"
     },
     {
-     "Program Name": "Web Development and Internet Applications Fundamentals",
-     "Credential": "College Certificate",
-     "Length": 1,
-     "Campus ": "Waterloo"
+     "name": "Web Development and Internet Applications Fundamentals",
+     "type": "College Certificate",
+     "length": 1,
+     "campus": "Waterloo"
     }
    ]
-  const labels = [...new Set(data.map(item => item.Credential))];
+  const labels = [...new Set(data.map(item => item.type))];
 
   const [selectedLabel, setSelectedLabel]=useState(null)
   
@@ -201,10 +201,21 @@ const CollegeBrief = () => {
       }
     </MajorCards>
     <CardWrapper cardType={CARD_WRAPPER_CLASSES.blue}>
-      <Emoji>🧐</Emoji>
-      <CollegeBriefText>
-        Conestoga College Institute of Technology and Advanced Learning is a public college located in Kitchener, Ontario, Canada
-      </CollegeBriefText>
+      {
+        selectedLabel ? 
+          <CardWrapper cardType={CARD_WRAPPER_CLASSES.line}>
+            {data.map(item => {
+              console.log(item)
+              const {name, type, length, campus} = item
+              const result = type === selectedLabel ? <p key={name}>{name}{length}{campus}</p> : ``
+              return result
+            })}
+          </CardWrapper>
+        :
+          <CollegeBriefText>
+            Conestoga College Institute of Technology and Advanced Learning is a public college located in Kitchener, Ontario, Canada
+          </CollegeBriefText>
+      }
     </CardWrapper>
    </CollegeBriefContainer>
   )
