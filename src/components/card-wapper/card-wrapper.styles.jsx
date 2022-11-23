@@ -30,7 +30,7 @@ export const CardWrapperLine = styled(CardWrapperBase)`
 `
 
 export const CardWrapperSmall = styled(CardWrapperBase)`
-  background: conic-gradient(at top right, slategray, white);
+  background: conic-gradient(at top right, black, #ffebcd);
   padding: 10px;
   border-radius: 2px;
   flex-grow: 4;
