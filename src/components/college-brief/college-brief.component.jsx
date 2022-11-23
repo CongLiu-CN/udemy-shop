@@ -207,7 +207,13 @@ const CollegeBrief = () => {
             {data.map(item => {
               console.log(item)
               const {name, type, length, campus} = item
-              const result = type === selectedLabel ? <p key={name}>{name}{length}{campus}</p> : ``
+              const result = 
+                type === selectedLabel ? 
+                  <CardWrapper key={name} cardType={CARD_WRAPPER_CLASSES.small}>
+                    <span>{name}</span><br />
+                    <span>{length} Year</span> | <span>{campus} Campus</span>
+                  </CardWrapper> 
+                : ``
               return result
             })}
           </CardWrapper>

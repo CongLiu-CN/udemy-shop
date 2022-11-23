@@ -17,11 +17,31 @@ export const CardWrapperBlue = styled(CardWrapperBase)`
 `
 
 export const CardWrapperLine = styled(CardWrapperBase)`
-  background: conic-gradient(from -90deg at bottom center, papayawhip, peachpuff);
+  background: white;
   width: 100%;
   height: 65vh;
-  border-radius: 10px;
-  background-color: white;
-  padding: 10px 20px;
-  overflow-y: scroll;
+  background: transparent;
+  border-radius: 0px;
+  border: none;
+  overflow-y: auto;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+`
+
+export const CardWrapperSmall = styled(CardWrapperBase)`
+  background: conic-gradient(at top right, slategray, white);
+  padding: 10px;
+  border-radius: 2px;
+  flex-grow: 4;
+  border: none;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid gray;
+    color: #696969;
+  }
 `
