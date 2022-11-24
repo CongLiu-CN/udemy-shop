@@ -85,6 +85,8 @@ export const LabelButtonSelected = styled.button`
 `;
 
 export const LabelButton = styled(LabelButtonSelected)`
+  height: 35px;
+  line-height: 35px;
   min-width: 135px;
   box-sizing: border-box;
   border-radius: 10px;
@@ -98,7 +100,6 @@ export const LabelButton = styled(LabelButtonSelected)`
     background: lightblue;
     color: black;
     border: none;
-    margin-top: 8px;
   }
 `;
 

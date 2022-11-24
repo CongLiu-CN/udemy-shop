@@ -1,9 +1,72 @@
-import {CollegeBriefContainer, CollegeBriefHeader, Title, CollegeBriefText, MajorCards} from './college-brief.styles';
+import {CollegeBriefContainer, CollegeBriefHeader, SubHeader, Arrow, Title, CollegeBriefText, MajorCards} from './college-brief.styles';
 import Button, {BUTTON_TYPE_CLASSES} from '../button/button.component'
 import CardWrapper, {CARD_WRAPPER_CLASSES} from '../card-wapper/card-wrapper.component'
-import { useState } from 'react';
+import { useState, useRef, } from 'react';
+import Emoji from '../icon/icon.component';
 
 const CollegeBrief = () => {
+  let scrl = useRef(null);
+  const [scrollX, setscrollX] = useState(0); // For detecting start scroll postion
+  const [scrolEnd, setscrolEnd] = useState(false); // For detecting end of scrolling
+
+  //Slide click
+  const slide = (shift) => {
+    // scrl.current.scrollLeft += shift;
+    let scrollAmount = 0;
+    let step = shift/10
+    let speed = 25
+    let element = scrl.current
+
+    const slideTimer = setInterval(() => {
+      element.scrollLeft += step;
+      scrollAmount += Math.abs(step);
+      if (scrollAmount >= Math.abs(shift)) {
+        clearInterval(slideTimer);
+      }
+    }, speed);
+
+    setscrollX(scrollX + shift);
+
+    // console.log(scrl.current.scrollWidth, scrl.current.scrollLeft, scrl.current.offsetWidth)
+    if (
+      Math.floor(scrl.current.scrollWidth - scrl.current.scrollLeft) <= scrl.current.offsetWidth
+    ) {
+      setscrolEnd(true);
+    } else {
+      setscrolEnd(false);
+    }
+  };
+
+  const scrollCheck = () => {
+    setscrollX(scrl.current.scrollLeft);
+    if (
+      Math.floor(scrl.current.scrollWidth - scrl.current.scrollLeft) <= scrl.current.offsetWidth
+    ) {
+      setscrolEnd(true);
+    } else {
+      setscrolEnd(false);
+    }
+  };
+
+
+  //scrollbar for college majors
+  // const sideScroll = (
+  //   element,
+  //   speed,
+  //   distance,
+  //   step,
+  // ) => {
+  //   let scrollAmount = 0;
+
+  //   const slideTimer = setInterval(() => {
+  //     element.scrollLeft += step;
+  //     scrollAmount += Math.abs(step);
+  //     if (scrollAmount >= distance) {
+  //       clearInterval(slideTimer);
+  //     }
+  //   }, speed);
+  // };
+
   //name, type, length, campus
   const data = [
     {
@@ -187,19 +250,33 @@ const CollegeBrief = () => {
     }
   }
 
+  // useEffect(() => {
+  //   setRightArrow(true)
+  // }, [])
+
+  // const leftClicked = () => {sideScroll(scrollWrapper.current, 25, 100, -10);}
+  // const rightClicked = () => {
+  //   setLeftArrow(true)
+  //   sideScroll(scrollWrapper.current, 25, 100, 10);
+  // }
+
   return (
    <CollegeBriefContainer>
     <CollegeBriefHeader>
       <Title>Conestoga College</Title>
     </CollegeBriefHeader>
-    <MajorCards>
-      {
-        labels.map(label => {
-          const isSelected = selectedLabel && label === selectedLabel
-          return <Button key={label} type='button' buttonType={isSelected ? BUTTON_TYPE_CLASSES.labelSelected : BUTTON_TYPE_CLASSES.label} onClick={() => handleClick(label)}>{label}</Button>
-        })
-      }
-    </MajorCards>
+    <SubHeader>
+      {scrollX !== 0 && (<Arrow onClick={() => slide(-155)}><Emoji>◀️</Emoji></Arrow>)}
+      <MajorCards ref={scrl} onScroll={scrollCheck}>
+        {
+          labels.map(label => {
+            const isSelected = selectedLabel && label === selectedLabel
+            return <Button key={label} type='button' buttonType={isSelected ? BUTTON_TYPE_CLASSES.labelSelected : BUTTON_TYPE_CLASSES.label} onClick={() => handleClick(label)}>{label}</Button>
+          })
+        }
+      </MajorCards>
+      {!scrolEnd && (<Arrow onClick={() => slide(+155)}><Emoji>▶️</Emoji></Arrow>)}
+    </SubHeader>
     <CardWrapper cardType={CARD_WRAPPER_CLASSES.blue}>
       {
         selectedLabel ? 
