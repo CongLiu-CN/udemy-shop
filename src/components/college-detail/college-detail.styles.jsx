@@ -19,39 +19,29 @@ export const CollegeBriefHeader = styled.div`
 
 export const SubHeader = styled.div`
   align-self: flex-end;
-  width: 70%;
+  width: 100%;
   display: flex;
   font-size: 32px;
 `;
 
 export const Title = styled.div`
   color: lightcyan;
-  padding: 10px 0;
+  padding: 10px;
   border-radius: 4px;
 `
 
 export const MajorCards = styled.div`
   margin: 0 auto;
-  width: 85%;
+  width: 100%;
   min-height: 50px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   column-gap: 20px;
-  overflow-x: hidden;
+  overflow: hidden;
+  flex-wrap: wrap;
 `
 
 export const CollegeBriefText = styled.span`
   margin-left: 0;
   font-size: 22px;
-`;
-
-export const Arrow = styled.div`
-  height: 35px;
-  line-height: 35px;
-  font-size: 24px;
-  text-align: center;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
